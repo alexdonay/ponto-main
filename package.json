@@ -2,7 +2,9 @@
   "name": "pontoteste",
   "version": "1.0.0",
   "main": "index.js",
-  "bin": "index.js",
+  "bin": {
+    "pontoteste": "index.js"
+  },
   "pkg": {
     "targets": [
       "node14-win-x64"
@@ -18,6 +20,7 @@
     "audit": "^0.0.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^5.2.0",
     "excel4node": "^1.7.2",
     "exceljs": "^4.2.1",
     "express": "^4.17.1",
@@ -45,5 +48,18 @@
   },
   "devDependencies": {
     "helper-moment": "^0.2.0"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexdonay/ponto-main.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/alexdonay/ponto-main/issues"
+  },
+  "homepage": "https://github.com/alexdonay/ponto-main#readme",
+  "description": ""
 }
