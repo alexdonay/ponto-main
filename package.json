@@ -12,7 +12,7 @@
     "assets": [
       "node_modules/**/*",
       "src/views/**/*",
-      "src/public/*"
+      "src/public/utils/*"
     ]
   },
   "license": "MIT",

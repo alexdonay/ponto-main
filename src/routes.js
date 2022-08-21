@@ -19,23 +19,7 @@ bcrypt.hashSync('nomedomeuis')
 
 
 
-routes.post('/gravaempresa', auth, async (req, res) => {
-  await Empresacontroler.create(req.body.razao_social, req.body.cnpj)
-  Empresacontroler.select().then(function (empresas) {
-    res.render('empresas', { empresas: empresas })
-  })
-})
-routes.get('/excluiempresa:id', auth, (req, res) => {
-  Empresacontroler.destroy(req.params.id)
-  Empresacontroler.select().then(function (empresas) {
-    res.render('empresas', { empresas: empresas })
-  })
-})
-routes.get('/empresas', auth, async function (req, res) {
-  Empresacontroler.select().then(async function (empresas) {
-    res.render('empresas', { empresas: empresas })
-  })
-})
+
 routes.post('/gravaempregado', auth, async (req, res) => {
   await empregadocontroler.create(
     req.body.nome,

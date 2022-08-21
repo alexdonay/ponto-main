@@ -1,34 +1,35 @@
 <div>
-<h1>Cadastro de Feriados</h1>
-<form id= 'feriado' method="post">
+    <h1>Cadastro de Feriados</h1>
+    <form id= 'feriado' method="post">
         <div class="form-group" id = 'dados'>
             <label for = "data">Data</label> 
-            <input class="form-control" required type="date" name = 'data'  /> </br>
+                <input class="form-control" required type="date" name = 'data'  /> </br>
             <label  for = "descricao">Descrição</label> 
-            <input required class="form-control"  id='descricao'name='descricao' type = 'text' size="30" maxlength="30"/>
+                <input required class="form-control"  id='descricao'name='descricao' type = 'text' size="30" maxlength="30"/>
             <div id ='controles'>
-            </br>
-            <input class = "btn btn-primary" type ='submit' value = 'Grava' id= 'btgrava:feriado' formaction="/gravafer" >
-            <input class = "btn btn-primary" type ='submit' value = 'Pesquisa' id= 'pesquisa:feriado' formaction="/feriados">
-            </br></br>
-            <div class="table-responsive-sm">
-                <table class = "table">
-                    <tr>
-                        <th>ID</th>
-                        <th>Data</th>
-                        <th>Descrição</th>
-                        <th>Excluir</th>
-                    </tr>
-                    {{#each feriados}}
-                    <tr>
-                        <td>{{id}}</td> 
-                        <td> <input type="date" value= {{{trimString data}}} />
-                        <td>{{descricao}}</td>
-                        <td><a href ='/excluiferiado{{id}}'>Excluir </a> </td>
-                    </tr>
-                    {{/each}}
-                </table>
+                </br>
+                <input class = "btn btn-primary" type ='submit' value = 'Grava' id= 'btgrava:feriado' formaction="/gravafer" >
+                <input class = "btn btn-primary" type ='submit' value = 'Pesquisa' id= 'pesquisa:feriado' formaction="/feriados">
+                </br></br>
+                <div class="table-responsive-sm">
+                    <table class = "table">
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Excluir</th>
+                        </tr>
+                        {{#each feriados}}
+                        <tr>
+                            <td>{{id}}</td> 
+                            <td> <input type="date" value= {{{trimString data}}} />
+                            <td>{{descricao}}</td>
+                            <td><a href ='/excluiferiado{{id}}'>Excluir </a> </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
             </div>
-        </form>
-    </div>
+        </div>     
+    </form>
 </div>

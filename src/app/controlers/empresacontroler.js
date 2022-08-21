@@ -12,11 +12,16 @@ class Empresacontroler {
     await Empresa.create({ razao_social: razao_social, cnpj: cnpj })
   }
   async destroy (id) {
-    Empresa.destroy({
-      where: {
-        id: [id]
-      }
-    })
+    try{
+      Empresa.destroy({
+        where: {
+          id: [id]
+        }
+      })
+
+    }catch(err){
+      
+    }
   }
   
   async count () {

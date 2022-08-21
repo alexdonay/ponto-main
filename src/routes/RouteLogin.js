@@ -3,6 +3,7 @@ const login = new Router()
 const passport = require('passport')
 require('../auth')(passport)
 
+
 login.get('/login', async (req, res) => {
   if (req.query.fail) {
     res.render('login', {
@@ -20,7 +21,6 @@ login.post(
     successRedirect: 'index',
     failureRedirect: 'login?fail=true'
   }),()=>{
-    console.log('teste')
   }
 )
 module.exports = login
