@@ -18,13 +18,13 @@ usuarios.get('/excluiusuario:id', auth,  async (req, res) => {
   usercontroller.destroy(req.params.id)
   res.redirect('/usuarios')
 })
-usuarios.post('/gravasenha',  auth,  async (req, res) => {
+usuarios.post('/gravasenha',   async (req, res) => {
   if (req.body.senha == req.body.confsenha) {
     usercontroller.create(req.body.login, bcrypt.hash(req.body.senha, 10))
     res.send('senha gravada com sucesso')
   }
 })
-usuarios.get('/cadastrarusuario',  auth, async (req, res) => {
+usuarios.get('/cadastrarusuario',  async (req, res) => {
   res.render('cadastrarusuario')
 })
 usuarios.get('/alterausuario:id',  auth,  async (req, res) => {
@@ -33,7 +33,7 @@ usuarios.get('/alterausuario:id',  auth,  async (req, res) => {
   console.log(usuario[0].user)
   res.render('alterarsenha', { usuario: usuario[0].user, id: req.params.id })
 })
-usuarios.post('/alterasenha',  auth, async (req, res) => {
+usuarios.post('/alterasenha',  async (req, res) => {
   if (req.body.senha == req.body.confsenha) {
     console.log('aqui')
     usercontroller.update(req.body.id, await bcrypt.hash(req.body.senha, 10))
