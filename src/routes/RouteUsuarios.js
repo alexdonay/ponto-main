@@ -20,7 +20,8 @@ usuarios.get('/excluiusuario:id', auth,  async (req, res) => {
 })
 usuarios.post('/gravasenha',  auth,  async (req, res) => {
   if (req.body.senha == req.body.confsenha) {
-    usercontroller.create(req.body.login, bcrypt.hash(req.body.senha, 10))
+    usercontroller.create(req.body.login, await bcrypt.hash(req.body.senha, 10))
+    console.log(await bcrypt.hash(req.body.senha, 10))
     res.send('senha gravada com sucesso')
   }
 })

@@ -1,5 +1,6 @@
-export default function geraponto () {
-    let pontos = pontoarray()
+function geraponto () {
+  const pontocontroler = require('../../app/controlers/pontocontroler')
+    let pontos = pontocontroler.selectByid(document.getElementById("periodo"))
     if (pontos.indexOf(document.getElementById('periodo').value) != -1) {
       window.alert('Este mês já foi calculado')
     } else {
@@ -202,4 +203,4 @@ export default function geraponto () {
       }
     }
   }
-  
+ 

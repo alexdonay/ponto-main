@@ -10,5 +10,5 @@ module.exports ={
       freezeTableName: true,
       underscoredAll:true,
   },
-
+  
 }

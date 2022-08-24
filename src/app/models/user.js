@@ -8,7 +8,7 @@ class User extends Sequelize.Model {
         password: Sequelize.STRING
       },
       {
-        tableName: 'users',
+        tableName: 'Users',
         sequelize,
         modelName: 'User'
       }

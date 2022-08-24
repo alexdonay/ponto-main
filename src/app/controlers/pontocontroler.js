@@ -10,7 +10,7 @@ class Pontocontroler {
     return ponto
   }
 
-  async selectponto (idfunc, competencia) {
+  async selectByid (idfunc) {
     const pontos = await Ponto.findAll({
       raw: true,
       nest: true,

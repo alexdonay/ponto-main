@@ -5,12 +5,12 @@ const usuarioscontroller = require('./app/controlers/usercontroller')
 bcrypt.hashSync('nomedomeuis')
 
 module.exports = function (passport) {
-  passport.serializeUser(function (user, done) {
-    done(null, user)
+  passport.serializeUser(async function (user, done) {
+    await done(null, user)
   })
 
-  passport.deserializeUser(function (user, done) {
-    done(null, user)
+passport.deserializeUser(async function (user, done) {
+    await done(null, user)
   })
 
   passport.use(

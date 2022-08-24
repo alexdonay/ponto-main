@@ -1,14 +1,16 @@
+<div>
 <h1>Cadastro Funcionário</h1>
+ <div class="form-group" id="dados">
     <form id= 'funcionario' class='frmempregado'action="/gravaempregado" method="post">
         <div id = 'dados'>
             <label for ="cod:funcionario">Nome:</label> <br>
-            <input required id='cod:funcionario' name = 'nome' type = 'text' size="30" maxlength="30" onkeyup='filtra()'/><br>
+            <input class="form-control" required id='cod:funcionario' name = 'nome' type = 'text' size="30" maxlength="30" onkeyup='filtra()'/><br>
             <label for = "cpf:funcionario">CPF:</label> <br>
-            <input required ='cpf:funcionario' name='cpf'type = 'text' size="10" maxlength="14" data-js ="cpf"/><br>
+            <input class="form-control" required ='cpf:funcionario' name='cpf'type = 'text' size="10" maxlength="14" onkeyup="this.value = mask.cpf(this.value)"/><br>
             <label for = "ctps:funcionario">CTPS:</label> <br>
-            <input id='ctps:funcionario' name='ctps'type = 'text' size="10" maxlength="14"/><br>
+            <input  class="form-control" id='ctps:funcionario' name='ctps'type = 'text' size="10" maxlength="14"/><br>
             <label class= 'idempresa' for='idempresa' size='100'>Empresa:</label><br>
-                <select  name="idempresa" id="idempresa" class='idempresa'>
+                <select class="form-control"  name="idempresa" id="idempresa" class='idempresa'>
                     {{#each empresas}}
                     <option value={{id}}>{{razao_social}}</option>
                     {{/each}}
@@ -16,14 +18,14 @@
 
         </div>
         <div id ='controles'>
-            
-            <input type ='submit' class='submitfunc' value = 'Grava' id= 'btgrava' formaction='/gravaempregado'>
-            
+            <br>
+            <input type ='submit' class='btn btn-primary' value = 'Grava' id= 'btgrava' formaction='/gravaempregado'>
+            <input type ='submit' class='btn btn-primary' value = 'Pesquisa' id= 'btpesquisa' formaction='/gravaempregado'>
            
             
         </div>
         <div id=horario>
-        <table id='tbempregados'> 
+        <table id='tbempregados' class="table table-striped table-responsive" > 
             
                <tr>
                    <th>Dia da semana</th>
@@ -115,3 +117,5 @@
         </div>
         
     </form>
+    </div>
+</div>

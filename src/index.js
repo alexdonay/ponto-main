@@ -13,6 +13,7 @@ let helpers = require('handlebars-helpers')()
 let Handlebars = require('handlebars')
 app.set('view engine', 'handlebars')
 app.use(express.static(path2.join(__dirname, './public')))
+app.use(express.static(path2.join(__dirname, './public/utils')))
 app.use(express.static(path2.join(__dirname, './views')))
 const handlebars = require('express-handlebars')
 const { stringify } = require('querystring')
@@ -46,6 +47,10 @@ const home = require('./routes/RouteHome')
 app.use(home)
 const empresa = require('./routes/RouteEmpresas')
 app.use(empresa)
+const empregados = require('./routes/RouteEmpregados')
+app.use(empregados)
+const ponto = require('./routes/RoutePonto')
+app.use(ponto)
 
 app.use(express.json)
 Handlebars.registerHelper('moment', require('helper-moment'))
@@ -59,7 +64,9 @@ Handlebars.registerHelper('ifvalue', function (conditional, options) {
 Handlebars.registerHelper('dateFormat', require('handlebars-dateformat'))
 Handlebars.registerHelper('trimString', function (passedString) {
   var theString = JSON.stringify(passedString).slice(1, 11)
-  return new Handlebars.SafeString(theString)
+  let other = theString.slice(8,10) + "/" + theString.slice(5,7) + "/" + theString.slice(0,4)
+
+  return new Handlebars.SafeString(other)
 })
 Handlebars.registerHelper('horasNormais', function (
   entrada,
