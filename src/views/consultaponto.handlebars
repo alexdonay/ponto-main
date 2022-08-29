@@ -1,9 +1,10 @@
+<div>
 <h1>Consulta Ponto</h1>
 <input name='idemp' type='text' value={{dados.id}} />
 <p>Funcionário:{{dados.nome}} </p>
 <p>Empresa:{{dados.empresa.razao_social}}</p>
 <form action="/consultaponto" method="post">
-<table>
+<table class = 'table'>
     <tr>
         <th>Periodo</th>
         <th>Consulta</th>
@@ -16,3 +17,4 @@
 {{/each}}
 </table>
 </Form>
+</div>

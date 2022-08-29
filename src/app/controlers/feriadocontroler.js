@@ -1,5 +1,14 @@
 const Feriado = require('../models/modferiado')
 class Feriadocontroler {
+  async selectbydate(){
+    const feriados = await Feriado.findAll({
+      raw: true,
+      nest: true,
+      attributes:['data']
+      
+    })
+    return feriados
+  }
   async select (req, res) {
     const feriado = await Feriado.findAll({
       raw: true,

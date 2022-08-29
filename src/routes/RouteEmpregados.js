@@ -74,7 +74,7 @@ routes.post('/gravaempregado', auth, async (req, res) => {
     empregadocontroler.destroy(req.params.id)
     const usuario = req.user[0]
     empregadocontroler.select().then(function (empregados) {
-      res.render('empregados', { empregados: empregados,usuario: usuario.user, userId: usuario.id })
+      res.render('pesquisaempregado', { empregados: empregados,usuario: usuario.user, userId: usuario.id })
     })
   })
   routes.get('/consultafuncionario:id', auth, async (req, res) => {
@@ -84,6 +84,7 @@ routes.post('/gravaempregado', auth, async (req, res) => {
     })
   })
   routes.post('/atualizafunc', auth, async (req, res) => {
+ 
     await empregadocontroler
       .update(
         req.body.id,
@@ -128,7 +129,7 @@ routes.post('/gravaempregado', auth, async (req, res) => {
         req.body.domsaida
       )
       .then(function (empregados) {
-        res.render('consultaempregado', { empregados: empregados })
+        res.render('pesquisaempregado')
       })
   })
 

@@ -1,0 +1,77 @@
+<style>
+    input[type="time"]::-webkit-inner-spin-button,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+</style>
+
+<div>
+    <h1>Livro Ponto</h1>
+    <div class='cabecalho'>
+        <div>
+            <p class='d-inline'>Competencia:</p>
+            <p class='d-inline'>{{req.body.competencia}}</p>
+        </div>
+        <div>
+            <p class='d-inline'>Código do funcionarío</p>
+            <p class='d-inline'>{{req.body.idfunc}}</p>
+        </div>
+
+    </div>
+    <table class="table">
+        <tr>
+            <th>Dia</th>
+            <th>Justificativa</th>
+            <th>Dia da Semana</th>
+            <th>Entrada</th>
+            <th>Entrada Intervalo</th>
+            <th>Saida Intervalo</th>
+            <th>Saída</th>
+            <th>Horas Normais</th>
+            <th>Horas Trabalhadas</th>
+            <th>Horas Extras</th>
+            <th>Horas Falta</th>
+        </tr>
+
+        {{#each dias}}
+        <tr>
+            <td><input type="date" name="dia" id="dia{{@index}}" value="{{dia}}" disabled =""></td>
+
+            <td><select name='justificativa' id="justificativa{{@index}} ">
+                    {{#ifvalue justificativa value=0}}
+                    <option value="0" selected>Normal</option>
+                    <option value="1">Folga</option>
+                    {{/ifvalue}}
+                    {{#ifvalue justificativa value=1}}
+                    <option value="0">Normal</option>
+                    <option value="1" selected>Folga</option>
+                    {{/ifvalue}}
+                </select>
+            </td>
+            <td>{{diasemana}}</td>
+            <td><input type='time' id="entrada{{@index}}" value = {{entrada}}></td>
+            <td><input type='time' id="entradai{{@index}}" value = {{entradainter}}></td>
+            <td><input type='time' id="saidai{{@index}}" value = {{saidainter}}></td>
+            <td><input type='time' id="saida{{@index}}" value = {{saida}}></td>
+            <td><input type='time' id="normais{{@index}}"></td>
+            <td><input type='time' id="trabalhadas{{@index}}" ></td>
+            <td><input type='time' id="extras{{@index}}" ></td>
+            <td><input type='time' id="faltas{{@index}}"></td>
+        </tr>
+
+        {{/each}}
+
+        </tr>
+
+
+        </tr>
+    </table>
+
+</div>

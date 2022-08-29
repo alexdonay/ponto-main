@@ -51,6 +51,8 @@ const empregados = require('./routes/RouteEmpregados')
 app.use(empregados)
 const ponto = require('./routes/RoutePonto')
 app.use(ponto)
+const gera = require('./routes/RouteGeraPonto')
+app.use(gera)
 
 app.use(express.json)
 Handlebars.registerHelper('moment', require('helper-moment'))

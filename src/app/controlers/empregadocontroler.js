@@ -121,7 +121,7 @@ class Funcionariocontroler {
   }
 
   async update (
-    _id,
+    id,
     nome,
     cpf,
     ctps,
@@ -204,7 +204,7 @@ class Funcionariocontroler {
         domsaidainter: domsaidainter,
         domsaida: domsaida
       },
-      { where: { id: _id } }
+      { where: { id: id } }
     )
   }
 }

@@ -10,6 +10,7 @@ async function auth (req, res, next) {
 
 index.get('/index', auth, (req, res) => {
   let usuario = req.user[0].user
-  res.render('index', {usuario:usuario})
+  let userId = req.user[0].id
+  res.render('index', {usuario:usuario, userId:userId})
 })
 module.exports = index

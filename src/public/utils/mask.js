@@ -39,8 +39,14 @@ const mask = {
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d)/, '$1-$2')
   },
+  data(value){
+    return value
+    .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '$1/$2')
+  },
   text () {}
 }
+
 document.querySelectorAll('input').forEach($input => {
   const field = $input.dataset.js
   $input.addEventListener(

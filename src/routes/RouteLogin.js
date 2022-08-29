@@ -3,7 +3,11 @@ const login = new Router()
 const passport = require('passport')
 require('../auth')(passport)
 
-
+login.get('/logout', function(req, res){
+  console.log("logout")
+  req.logout()
+    res.redirect('/login');
+});
 login.get('/login', async (req, res) => {
   if (req.query.fail) {
     res.render('login', {
@@ -23,4 +27,5 @@ login.post(
   }),()=>{
   }
 )
+
 module.exports = login
