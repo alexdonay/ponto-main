@@ -18,7 +18,7 @@ routes.post('/livroponto', async (req, res) => {
   let diaobj = await diasobj(todosdias, req.body.idfunc)
    let usuario = req.user[0].user
   let userId = req.user[0].id
-  let competencia = req.body.competencia)
+  let competencia = "12/2022"
   let idfunc = req.body.idfunc
   res.render('livroponto', { idfunc:idfunc,competencia:competencia, dias: diaobj,usuario:usuario, userId:userId })
 })
