@@ -16,8 +16,10 @@ async function auth (req, res, next) {
 routes.post('/livroponto', async (req, res) => {
   let todosdias = dias(req.body.competencia)
   let diaobj = await diasobj(todosdias, req.body.idfunc)
-
-  res.render('livroponto', { dias: diaobj })
+   let usuario = req.user[0].user
+  let userId = req.user[0].id
+ 
+  res.render('livroponto', { dias: diaobj,usuario:usuario, userId:userId })
 })
 
 module.exports = routes
