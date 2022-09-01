@@ -16,11 +16,19 @@ async function auth (req, res, next) {
 routes.post('/livroponto', async (req, res) => {
   let todosdias = dias(req.body.competencia)
   let diaobj = await diasobj(todosdias, req.body.idfunc)
-   let usuario = req.user[0].user
+  let usuario = req.user[0].user
   let userId = req.user[0].id
-  let competencia = "12/2022"
+  let competencia = '12/2022'
   let idfunc = req.body.idfunc
-  res.render('livroponto', { idfunc:idfunc,competencia:competencia, dias: diaobj,usuario:usuario, userId:userId })
+  let empregado = await empregadocontroler.selectid(idfunc)
+  res.render('livroponto', {
+    idfunc: idfunc,
+    competencia: competencia,
+    dias: diaobj,
+    usuario: usuario,
+    userId: userId,
+    nome:empregado.nome
+  })
 })
 
 module.exports = routes
@@ -38,9 +46,8 @@ function dias (mesano) {
 }
 async function diasobj (todosdias, id) {
   var feriados = await feriadoscontroler.selectbydate()
-  let dadosponto =[];
+  let dadosponto = []
   let empregado = await empregadocontroler.selectid(id)
-
 
   todosdias.forEach(element => {
     var dateformat =
@@ -66,50 +73,56 @@ async function diasobj (todosdias, id) {
         saidainter: empregado.segsaidainter,
         saida: empregado.segsaida
       },
-      2: { justificativa: empregado.terjustificativa,
+      2: {
+        justificativa: empregado.terjustificativa,
         diasemana: 'Terça-Feira',
         entrada: empregado.terentrada,
         entradainter: empregado.terentradainter,
         saidainter: empregado.tersaidainter,
         saida: empregado.tersaida
       },
-      3: {justificativa:empregado.quajustificativa,
+      3: {
+        justificativa: empregado.quajustificativa,
         diasemana: 'Quarta-Feira',
         entrada: empregado.quaentrada,
         entradainter: empregado.quaentradainter,
         saidainter: empregado.quasaidainter,
         saida: empregado.quasaida
       },
-      4: {justificativa:empregado.quijustificativa,
+      4: {
+        justificativa: empregado.quijustificativa,
         diasemana: 'Quinta-Feira',
         entrada: empregado.quientrada,
         entradainter: empregado.quientradainter,
         saidainter: empregado.quisaidainter,
         saida: empregado.quisaida
       },
-      5: {justificativa:empregado.sexjustificativa,
+      5: {
+        justificativa: empregado.sexjustificativa,
         diasemana: 'Sexta-Feira',
         entrada: empregado.sexentrada,
         entradainter: empregado.sexentradainter,
         saidainter: empregado.sexsaidainter,
         saida: empregado.sexsaida
       },
-      6: {justificativa:empregado.sabjustificativa,
+      6: {
+        justificativa: empregado.sabjustificativa,
         diasemana: 'Sabado',
         entrada: empregado.sabentrada,
         entradainter: empregado.sabentradainter,
         saidainter: empregado.sabsaidainter,
         saida: empregado.sabsaida
       },
-      0:{justificativa:empregado.domjustificativa,
+      0: {
+        justificativa: empregado.domjustificativa,
         diasemana: 'Domingo',
         entrada: empregado.domentrada,
         entradainter: empregado.domentradainter,
         saidainter: empregado.domsaidainter,
         saida: empregado.domsaida
-      },
+      }
     }
-    
+
     let eferiado = feriados.find(o => {
       return (
         o.data.toLocaleDateString('en-US', { timeZone: 'UTC' }) ==
@@ -118,14 +131,9 @@ async function diasobj (todosdias, id) {
     })
     if (eferiado != undefined) {
       dados[day.getDay()].justificativa = 1
-   } 
-   dados[day.getDay()].dia = dateformatother
+    }
+    dados[day.getDay()].dia = dateformatother
     dadosponto.push(dados[day.getDay()])
-    
-    console.log(dadosponto)
-  
-    
-
   })
 
   return dadosponto
